@@ -19,6 +19,15 @@
     <link rel="shortcut icon" href="images/dir_foricon.ico" type="image/x-icon"/>
     <link rel="stylesheet" type="text/css" href="./slick/slick.css">
     <link rel="stylesheet" type="text/css" href="./slick/slick-theme.css">
+
+    <script type="text/javascript">
+        var onloadCallback = function() {
+            grecaptcha.render('google-recaptcha', {
+                'sitekey': '6Lc-mhkUAAAAAF2TY2ngCi6WE_GLaakjVNZX5jRq',
+                'theme': 'dark'
+            });
+        };
+    </script>
 </head>
 <body>
 
@@ -27,11 +36,15 @@
 
     <header id="header" class="alt">
     <nav>
-        <a href="index.html"><img id="logo-main" style="background: rgba(255,255,255,0.6); margin: 0" src="images/intant_2008.png" /></a>
+        <a href="index.html">
+            <a href="http://www.intant.ru/">
+                <img id="logo-main" style="background: rgba(255,255,255,0.6); margin: 0" src="images/intant_2008.png" />
+            </a>
+        </a>
         <ul>
             <li><a href="index.html">Главная</a></li>
             <li>
-                <a href="directum.html">DIRECTUM <span class="caret"></span> </a>
+                <a href="directum.html">DIRECTUM  <span class="caret"></span> </a>
                 <div>
                     <ul>
                         <li><a href="directum.html">Описание</a></li>
@@ -53,7 +66,7 @@
                 </div>
             </li>
             <li>
-                <a href="services.html">Услуги <span class="caret"></span></a>
+                <a href="services.html">Услуги <span class="caret"></span> </a>
                 <div>
                     <ul>
                         <li><a href="services.html">Внедрение</a></li>
@@ -62,7 +75,7 @@
                 </div>
             </li>
             <li>
-                <a href="about_us.html">О нас <span class="caret"></span></a>
+                <a href="about_us.html">О нас <span class="caret"></span> </a>
                 <div>
                     <ul>
                         <li><a href="about_us.html">Проекты</a></li>
@@ -506,6 +519,21 @@
                         <h3 class="major my_center">Крутых Оксана Викторовна</h3>
                         <p class="my_center">Программист</p>
                     </article>
+
+
+                    <article class="my_staff_under_bottom">
+                        <a><p class="my_center"><img class="staff" src="images/staff/bdu1.jpg" onmouseover="this.src='images/staff/bdu2.jpg'" onmouseout="this.src='images/staff/bdu1.jpg'" alt=""/>
+                        </p></a>
+                        <h3 class="major my_center">Боронин Дмитрий Юрьевич</h3>
+                        <p class="my_center">Программист</p>
+                    </article>
+                    <article class="my_staff_under_bottom">
+                        <a><p class="my_center"><img class="staff" src="images/staff/klu1.jpg" onmouseover="this.src='images/staff/klu2.jpg'" onmouseout="this.src='images/staff/klu1.jpg'" alt=""/>
+                        </p></a>
+                        <h3 class="major my_center">Кудряшов Лев Юрьевич</h3>
+                        <p class="my_center">Программист</p>
+                    </article>
+
                 </section>
             </div>
         </div>
@@ -540,7 +568,13 @@
                     <label for="message">Номер телефона, e-mail</label>
                     <input type="text" name="message" id="message">
                 </div>
-                <ul class="actions">
+
+                <div class="field">
+                    <div id="google-recaptcha"></div>
+                    <div class="text-danger" id="recaptchaError"></div>
+                </div>
+
+                <ul class="actions action_send_all">
                     <li><input type="submit" id="send_all" value="Отправить"/></li>
                 </ul>
             </form>
@@ -563,6 +597,7 @@
 </div>
 
 <!-- Scripts -->
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
 <script src="assets/js/skel.min.js"></script>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/jquery.scrollex.min.js"></script>

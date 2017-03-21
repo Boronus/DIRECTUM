@@ -6,7 +6,6 @@
 -->
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
     <title>DIRECTUM | DirectumRX</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -19,7 +18,14 @@
     <link rel="stylesheet" href="assets/css/ie8.css"/><![endif]-->
     <link rel="shortcut icon" href="images/dir_foricon.ico" type="image/x-icon"/>
 
-    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script type="text/javascript">
+        var onloadCallback = function() {
+            grecaptcha.render('google-recaptcha', {
+                'sitekey': '6Lc-mhkUAAAAAF2TY2ngCi6WE_GLaakjVNZX5jRq',
+                'theme': 'dark'
+            });
+        };
+    </script>
 </head>
 <body>
 
@@ -215,7 +221,6 @@
                             <h3 class="major my_center">Косихина Ирина Игоревна</h3>
                             <p class="my_center">Специалист по внедрению ИС</p>
                         </article>
-
                         <article class="my_staff_bottom">
                             <a><p class="my_center"><img class="staff" src="images/staff/smv1.jpg" onmouseover="this.src='images/staff/smv2.jpg'" onmouseout="this.src='images/staff/smv1.jpg'" alt=""/>
                             </p></a>
@@ -278,11 +283,11 @@
                 </div>
 
                 <div class="field">
-                    <div class="g-recaptcha" data-sitekey="6Lc-mhkUAAAAAF2TY2ngCi6WE_GLaakjVNZX5jRq"></div>
+                    <div id="google-recaptcha"></div>
                     <div class="text-danger" id="recaptchaError"></div>
                 </div>
 
-                <ul class="actions">
+                <ul class="actions action_send_all">
                     <li><input type="submit" id="send_all" value="Отправить"/></li>
                 </ul>
             </form>
@@ -305,6 +310,7 @@
 </div>
 
 <!-- Scripts -->
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
 <script src="assets/js/skel.min.js"></script>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/jquery.scrollex.min.js"></script>

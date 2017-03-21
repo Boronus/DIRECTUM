@@ -2658,6 +2658,8 @@
 
 #send_all{
 	background-color: rgba(255, 255, 255, 0.15) !important;
+	height: 75px;
+	border: #626262 solid 1px;
 }
 /* Features */
 
@@ -4336,4 +4338,12 @@ ul.sub-menu {
     box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.2);
 	position: relative;
 	top: -7px;
+}
+
+.action_send_all {
+	float: right;
+}
+
+#google-recaptcha {
+	float: left;
 }
