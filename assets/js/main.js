@@ -173,8 +173,10 @@
 
 				});
 
-        $("#form").submit(function() { //устанавливаем событие отправки для формы с id=form
-            var form_data = $(this).serialize(); //собераем все данные из формы
+        //$("#form").submit(function() { //устанавливаем событие отправки для формы с id=form
+        $("#send_all").click(function() {
+            $('#recaptchaError').text('Кликнуто');
+            var form_data = $("#form").serialize(); //собераем все данные из формы
 
             // Работа с виджетом recaptcha
             // 1. Получить ответ гугл капчи
@@ -191,47 +193,53 @@
             }
 
             // 3. Если форма валидна и длина капчи не равно пустой строке, то отправляем форму на сервер (AJAX)
-            if ((formValid) && (captcha.length)) {
+            if (captcha.length) {
 
                 // добавить в formData значение 'g-recaptcha-response'=значение_recaptcha
-                form_data.append('g-recaptcha-response', captcha);
-
+                //form_data.append('g-recaptcha-response', captcha);
+                $('#recaptchaError').text('Готово к ajax-запросу');
                 $.ajax({
                     type: "POST", //Метод отправки
-                    url: 'send.php', //путь до php фаила отправителя
+                    url: 'http://directummobile:88/assets/js/send.php',
+                    //url: 'http://directum.intant.ru/assets/js/send.php', //путь до php фаила отправителя
                     data: form_data,
-                    success: function (data) {
+                    success: function (result) {
                         //код в этом блоке выполняется при успешной отправке сообщения
                         alert("Ваше сообщение отпрвлено!");
-
+                        $('#recaptchaError').text('Отправлено');
                         // разбираем строку JSON, полученную от сервера
-                        var $data =  JSON.parse(data);
+                        //var $data =  JSON.parse(data);
+                        //$('#recaptchaError').text('JSON');
                         // устанавливаем элементу, содержащему текст ошибки, пустую строку
-                        $('#error').text('');
-
+                        //$('#error').text('');
+                        $("#recaptchaError").html(result);
                         // если сервер вернул ответ success, то значит двнные отправлены
-                        if ($data.result == "success") {
+                        /*if ($data.result == "success") {
+                            $('#recaptchaError').text('Success');
                             // скрываем форму обратной связи
                             $('#messageForm').hide();
                             // удаляем у элемента, имеющего id=msgSubmit, класс hidden
                             $('#msgSubmit').removeClass('hidden');
                         } else {
+                            $('#recaptchaError').text('Sucks');
                             // Если сервер вернул ответ error, то делаем следующее...
-                            $('#error').text('Произошла ошибка при отправке формы на сервер.');
+                            //$('#error').text('Произошла ошибка при отправке формы на сервер.');
                             // Сбрасываем виджет reCaptcha
                             grecaptcha.reset();
                             // Если существует свойство msg у объекта $data, то...
-                            if ($data.msg) {
-                                // вывести её в элемент у которого id=recaptchaError
-                                $('#msg').text($data.msg);
-                            }
-                            if ($data.files) {
-                                $('#error').html($('#error').text()+'<br>'+$data.files);
-                            }
-                        }
+                            //if ($data.msg) {
+                            //    // вывести её в элемент у которого id=recaptchaError
+                            //    $('#msg').text($data.msg);
+                            //}
+                            //if ($data.files) {
+                            //    $('#error').html($('#error').text()+'<br>'+$data.files);
+                            //}
+                        }*/
                     },
-                    error: function (request) {
-                        $('#error').text('Произошла ошибка ' + request.responseText + ' при отправке данных.');
+                    error: function (result) {
+                        $('#recaptchaError').text('Не отправлено');
+                        $("#recaptchaError").html(result);
+                        //$('#error').text('Произошла ошибка ' + request.responseText + ' при отправке данных.');
                     }
                 });
             }

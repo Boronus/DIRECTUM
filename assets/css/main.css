@@ -2658,8 +2658,8 @@
 
 #send_all{
 	background-color: rgba(255, 255, 255, 0.15) !important;
-	height: 75px;
-	border: #626262 solid 1px;
+	/*height: 75px;
+	border: #626262 solid 1px;*/
 }
 /* Features */
 
@@ -4339,7 +4339,7 @@ ul.sub-menu {
 	position: relative;
 	top: -7px;
 }
-
+/*
 .action_send_all {
 	float: right;
 }
@@ -4347,3 +4347,9 @@ ul.sub-menu {
 #google-recaptcha {
 	float: left;
 }
+
+@media screen and (max-width: 1680px) {
+	.action_send_all {
+		float: left;
+	}
+}*/
